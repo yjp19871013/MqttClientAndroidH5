@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title></title>
+</head>
+<body>
+    <input id="subscribe-topic" placeholder="请输入要订阅的主题"><br>
+    <button onclick="on_subscribe()">订阅</button><br>
+    <label id="result">无结果</label><br><br>
+
+    <input id="publish-topic" placeholder="请输入要发布的主题"><br>
+    <input id="payload" placeholder="请输入发布的内容"><br>
+    <button onclick="on_publish()">发布</button>
+
+    <script type="text/javascript">
+        function on_subscribe() {
+            var topicInput = document.getElementById("subscribe-topic");
+            window.main.subscribe(topicInput.value, 2);
+        }
+
+        function on_publish() {
+            var topicInput = document.getElementById("publish-topic");
+            var payloadInput = document.getElementById("payload");
+            window.main.publish(topicInput.value, payloadInput.value, 2, false);
+        }
+
+        function refresh_result(result) {
+            var resultLabel = document.getElementById("result");
+            resultLabel.innerHTML = result
+        }
+    </script>
+</body>
+</html>
